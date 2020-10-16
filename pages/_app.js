@@ -4,10 +4,11 @@ import fetch from 'isomorphic-unfetch'
 import cookies from 'next-cookies'
 import '../styles/login.css'
 import App, { Container } from "next/app";
+import UserProvider from '../components/UserContext';
 
 export default function MyApp({Component, pageProps}) {
 
-  MyApp.getInitialProps = async (appContext) => {
+ /* MyApp.getInitialProps = async (appContext) => {
     const { ctx } = appContext;
     // Calls `getInitialProps` and fills `appProps.pageProps`
     let error;
@@ -29,7 +30,7 @@ export default function MyApp({Component, pageProps}) {
     }
     return { ...appProps };
   };
+*/
 
-
-  return<Component {...pageProps} />
+  return<UserProvider><Component {...pageProps} /></UserProvider>
 }

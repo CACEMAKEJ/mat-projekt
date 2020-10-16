@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router'
 
 import cookie from 'js-cookie';
 import firebase from '../firebaseSetup';
@@ -8,13 +9,29 @@ export const UserContext = React.createContext();
 const tokenName = 'firebaseToken';
 
 const UserProvider = ({ children }) => {
-  
+
+  const router = useRouter()
+
   const emailLogin = async (email, password, redirectPath) => {
     await firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        console.log('User logged in.');
+
+        router.push(redirectPath)
+       
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const logout = async (redirectPath) => {
+    await firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        router.push(redirectPath)   
       })
       .catch((err) => {
         console.log(err);
@@ -26,8 +43,11 @@ const UserProvider = ({ children }) => {
       if (user) {
         const token = await user.getIdToken();
         cookie.set(tokenName, token, { expires: 14 });
+        console.log('Logged in.')
+
       } else {
         cookie.remove(tokenName);
+        console.log('Logged out.')
       }
     });
   };
@@ -39,7 +59,7 @@ const UserProvider = ({ children }) => {
     };
   }, []);
 
-  return <UserContext.Provider value={{ emailLogin }}>{children}</UserContext.Provider>;
+  return <UserContext.Provider value={{ emailLogin, logout }}>{children}</UserContext.Provider>;
 };
 
 export default UserProvider;
