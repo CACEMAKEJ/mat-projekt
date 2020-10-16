@@ -15,8 +15,8 @@
 }
 
 .landing-text{
-    font-family: 'Roboto', sans-serif;
-    font-size: 55px;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 5rem !important;
 }
 
 .about{
@@ -26,6 +26,8 @@
     align-items: center;
     flex-direction: row;
     justify-content: space-around;
+    margin-left: 6em;
+    margin-right: 6em;
 
 }
 
@@ -44,25 +46,6 @@
     width: 50%;
 }
 
-a.bt-login{
-    display:inline-block;
-    padding:0.35em 1.2em;
-    border:0.1em solid black;
-    margin:0 0.3em 0.3em 0;
-    border-radius:0.12em;
-    box-sizing: border-box;
-    text-decoration:none;
-    font-family:'Roboto',sans-serif;
-    	font-weight:300;
-    color: black;
-    text-align:center;
-    transition: all 0.2s;
-}
-a.bt-login:hover{
-    color:solid black;
-    background-color:white;
-}
-
 .header-links{
     position: relative;
     width: 30%;
@@ -76,7 +59,7 @@ a.bt-login:hover{
 .header-link::after {
     content:'';
     display: block;
-    width: 0;
+    width: 0%;
     height: 3px;
     background: black;
     transition: width .4s;
