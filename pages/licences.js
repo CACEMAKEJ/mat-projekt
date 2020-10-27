@@ -1,5 +1,3 @@
-import {loadDB} from '../lib/db.js'
-
 export default class Index{
     static async getInitialProps(){
         let firebase = await loadFirebase()

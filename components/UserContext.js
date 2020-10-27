@@ -8,7 +8,9 @@ export const UserContext = React.createContext();
 
 const tokenName = 'firebaseToken';
 
-const UserProvider = ({ children }) => {
+const UserProvider = ({ children, initialUser }) => {
+
+  const [user, setUser] = useState(initialUser);
 
   const router = useRouter()
 
@@ -43,11 +45,11 @@ const UserProvider = ({ children }) => {
       if (user) {
         const token = await user.getIdToken();
         cookie.set(tokenName, token, { expires: 14 });
-        console.log('Logged in.')
-
+        setUser(user);
       } else {
         cookie.remove(tokenName);
         console.log('Logged out.')
+        setUser(null);
       }
     });
   };
@@ -59,7 +61,7 @@ const UserProvider = ({ children }) => {
     };
   }, []);
 
-  return <UserContext.Provider value={{ emailLogin, logout }}>{children}</UserContext.Provider>;
+  return <UserContext.Provider value={{ emailLogin, logout, user }}>{children}</UserContext.Provider>;
 };
 
 export default UserProvider;

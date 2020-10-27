@@ -6,31 +6,34 @@ import '../styles/login.css'
 import App, { Container } from "next/app";
 import UserProvider from '../components/UserContext';
 
-export default function MyApp({Component, pageProps}) {
+const dev = process.env.NODE_ENV === 'development';
+const server = 'http://localhost:3000'; 
 
- /* MyApp.getInitialProps = async (appContext) => {
-    const { ctx } = appContext;
-    // Calls `getInitialProps` and fills `appProps.pageProps`
-    let error;
-    const appProps = await App.getInitialProps(appContext);
-  
-    const { firebaseToken } = cookies(ctx);
-  
-    if (firebaseToken) {
-      try {
-        const headers = {
-          'Context-Type': 'application/json',
-          Authorization: JSON.stringify({ token: firebaseToken }),
-        };
-        const result = await fetch(`${server}/api/validate`, { headers }).then((res) => res.json());
-        return { ...result, ...appProps };
-      } catch (e) {
-        console.log(e);
-      }
-    }
-    return { ...appProps };
-  };
-*/
+export default function MyApp(appContext) {
 
-  return<UserProvider><Component {...pageProps} /></UserProvider>
+  const {Component, pageProps} = appContext;
+  return<UserProvider initialUser={appContext.user}><Component {...pageProps} /></UserProvider>
 }
+
+MyApp.getInitialProps = async (appContext) => {
+
+  const { ctx } = appContext;
+  let error;
+  const appProps = await App.getInitialProps(appContext);
+
+  const { firebaseToken } = cookies(ctx);
+
+  if (firebaseToken) {
+    try {
+      const headers = {
+        'Context-Type': 'application/json',
+        Authorization: JSON.stringify({ token: firebaseToken }),
+      };
+      const result = await fetch(`${server}/api/validate`, { headers }).then((res) => res.json());
+      return { ...result, ...appProps };
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  return { ...appProps };
+};

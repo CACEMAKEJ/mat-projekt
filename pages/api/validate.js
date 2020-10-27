@@ -1,10 +1,19 @@
-import { firebaseAdmin } from '../../utilities/firebaseAdminSetup';
+  import admin from 'firebase-admin';
 
-const validate = async (token) => {
-  const decodedToken = await firebaseAdmin.auth().verifyIdToken(token, true);
+  var serviceAccount = require("../../rehamza-mprj-firebase-adminsdk-iiyyz-99cc921c51.json");
+  if(!admin.apps.length){
+    
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount),
+    }
+  )
+  }
+
+  const validate = async (token) => {
+  const decodedToken = await admin.auth().verifyIdToken(token, true);
   let userData;
-  const user = await firebaseAdmin.auth().getUser(decodedToken.uid);
-  await firebaseAdmin
+  const user = await admin.auth().getUser(decodedToken.uid);
+  await admin
     .firestore()
     .collection('users')
     .doc(decodedToken.uid)
@@ -20,9 +29,7 @@ const validate = async (token) => {
   const result = {
     user: {
       uid: user.uid,
-      email: user.email,
-      username: userData.username,
-      emailVerified: user.emailVerified,
+      email: user.email
     },
   };
   return result;

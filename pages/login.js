@@ -21,7 +21,7 @@ const Login = () => {
                             <label>Heslo</label>
                             <input onChange={e => setPassword(e.target.value)} type='password' />
                         </Form.Field>
-                        <Button onClick={()=>value.emailLogin(email, password, '/')} type='submit'>Přihlásit</Button>
+                        <Button onClick={()=>value.emailLogin(email, password, '/profile')} type='submit'>Přihlásit</Button>
                         <Button onClick={()=>value.logout('/')}>Odhlásit</Button>
                     </Form>
                 </div>
