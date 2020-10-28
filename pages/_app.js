@@ -3,6 +3,7 @@ import '../styles/globals.css'
 import fetch from 'isomorphic-unfetch'
 import cookies from 'next-cookies'
 import '../styles/login.css'
+import '../styles/profile.css'
 import App, { Container } from "next/app";
 import UserProvider from '../components/UserContext';
 
