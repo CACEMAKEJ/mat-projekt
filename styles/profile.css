@@ -1,8 +1,21 @@
-.profile-body{
-   height: 100vh;
-   background-color: #b6b6b6;
-   justify-content: center;
-   align-items: center;
-   display: flex;
-   flex-direction: column;
+.profile-container {
+  height: calc(100vh - 140px);
+  background-color: #b6b6b6;
+  justify-content: center;
+  align-items: stretch;
+  display: flex;
+}
+
+.profile-usercard {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+}
+
+.profile-licences {
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  display: flex;
 }

@@ -1,6 +1,10 @@
-const Layout = (props) =>
- <div id="App">
-    {props.children}
- </div>
+import Header from '../components/Header.js';
 
- export default Layout
+const Layout = (props) => (
+  <div id='App'>
+    <Header />
+    <div className='rehamza-content'>{props.children}</div>
+  </div>
+);
+
+export default Layout;

@@ -1,26 +1,23 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import UserProvider, { UserContext } from '../components/UserContext';
-import Layout from '../components/Layout.js'
-import Header from '../components/Header.js'
+import Layout from '../components/Layout.js';
+import Header from '../components/Header.js';
+import UserCard from '../components/UserCard.js';
 
 const Profile = (user) => {
+  return (
+    <Layout>
+      <div className='profile-container'>
+        <div className='profile-usercard'>
+          <UserCard />
+        </div>
+        <div className='profile-licences'>
+          <UserCard />
+        </div>
+      </div>
+    </Layout>
+  );
+};
 
-    return (
-         <Layout>
-            <div className='profile-container'>
-                <Header/>
-                <div className='profile-body'>
-                    <UserContext.Consumer>{value=><h2>{value.user.email}</h2>}</UserContext.Consumer>
-                    <UserContext.Consumer>{value=><p>{value.user.uid}</p>}</UserContext.Consumer>   
-                </div>
-            </div>
-            
-         </Layout>
-    )
-
-
-}
-
-export default Profile
-            
+export default Profile;
