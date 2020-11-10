@@ -1,5 +1,4 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import firebase from '../firebaseSetup';
 import UserProvider, { UserContext } from '../components/UserContext';
 import Layout from '../components/Layout.js';
 import Header from '../components/Header.js';
@@ -13,6 +12,7 @@ const Profile = (user) => {
           <UserCard />
         </div>
         <div className='profile-licences'>
+          <h2>Vámi vlastněné licence</h2>
           <UserCard />
         </div>
       </div>

@@ -1,35 +1,19 @@
-  import admin from 'firebase-admin';
+import admin from 'firebase-admin';
 
-  var serviceAccount = require("../../rehamza-mprj-firebase-adminsdk-iiyyz-99cc921c51.json");
-  if(!admin.apps.length){
-    
-    admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
-    }
-  )
-  }
+var serviceAccount = require('../../rehamza-mprj-firebase-adminsdk-iiyyz-99cc921c51.json');
+if (!admin.apps.length) {
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+  });
+}
 
-  const validate = async (token) => {
+const validate = async (token) => {
   const decodedToken = await admin.auth().verifyIdToken(token, true);
-  let userData;
   const user = await admin.auth().getUser(decodedToken.uid);
-  await admin
-    .firestore()
-    .collection('users')
-    .doc(decodedToken.uid)
-    .get()
-    .then((doc) => {
-      if (doc.exists) {
-        userData = { ...doc.data() };
-      }
-    })
-    .catch((error) => {
-      console.log('Error getting document:', error);
-    });
   const result = {
     user: {
       uid: user.uid,
-      email: user.email
+      email: user.email,
     },
   };
   return result;

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+
+import axios from 'axios';
 
 import cookie from 'js-cookie';
 import firebase from '../firebaseSetup';
@@ -9,19 +11,16 @@ export const UserContext = React.createContext();
 const tokenName = 'firebaseToken';
 
 const UserProvider = ({ children, initialUser }) => {
-
   const [user, setUser] = useState(initialUser);
 
-  const router = useRouter()
+  const router = useRouter();
 
   const emailLogin = async (email, password, redirectPath) => {
     await firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-
-        router.push(redirectPath)
-       
+        router.push(redirectPath);
       })
       .catch((err) => {
         console.log(err);
@@ -33,11 +32,20 @@ const UserProvider = ({ children, initialUser }) => {
       .auth()
       .signOut()
       .then(() => {
-        router.push(redirectPath)   
+        router.push(redirectPath);
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const createUser = async (email, password) => {
+    const token = await user.getIdToken(true);
+    await axios.post(
+      '/api/create-user',
+      { email, password },
+      { headers: { Authorization: 'Bearer ' + token } },
+    );
   };
 
   const onAuthStateChange = () => {
@@ -48,7 +56,7 @@ const UserProvider = ({ children, initialUser }) => {
         setUser(user);
       } else {
         cookie.remove(tokenName);
-        console.log('Logged out.')
+        console.log('Logged out.');
         setUser(null);
       }
     });
@@ -61,7 +69,11 @@ const UserProvider = ({ children, initialUser }) => {
     };
   }, []);
 
-  return <UserContext.Provider value={{ emailLogin, logout, user }}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider value={{ emailLogin, logout, user, createUser }}>
+      {children}
+    </UserContext.Provider>
+  );
 };
 
 export default UserProvider;
