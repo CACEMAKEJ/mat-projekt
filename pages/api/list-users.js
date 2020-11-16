@@ -7,21 +7,32 @@ if (!admin.apps.length) {
   });
 }
 
-const createUser = async (token, email, password) => {
+const listUsers = async (token) => {
   const decodedToken = await admin.auth().verifyIdToken(token, true);
 
   if (decodedToken.admin) {
-    await admin.auth().createUser({
-      email,
-      password,
-    });
+    const users = [];
+    const listAllUsers = async (nextPageToken) => {
+      const result = await admin.auth().listUsers(1000, nextPageToken);
+      users.push(...result.users);
+      if (result.pageToken) {
+        await listAllUsers(result.pageToken);
+      }
+    };
+    await listAllUsers();
+    console.log(users);
+    return users
+      .filter((user) => !user.customClaims?.admin)
+      .map((user) => {
+        return { email: user.email, uid: user.uid };
+      });
   } else {
     throw new Error('ehe');
   }
 };
 
 export default async (req, res) => {
-  if (req.method === 'POST') {
+  if (req.method === 'GET') {
     try {
       const token = req.headers.authorization.split(' ')[1];
       if (!token) {
@@ -30,7 +41,8 @@ export default async (req, res) => {
           message: 'Auth token missing.',
         });
       }
-      await createUser(token, req.body.email, req.body.password);
+      const users = await listUsers(token);
+      res.json(users);
       res.statusCode = 200;
       res.end();
     } catch (err) {

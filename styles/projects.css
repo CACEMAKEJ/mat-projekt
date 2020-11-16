@@ -1,4 +1,37 @@
 .projects {
   height: calc(100vh - 140px);
   background-color: #f4a142;
+  justify-content: space-around;
+  align-items: stretch;
+  display: flex;
+  width: 100%;
+}
+
+.projects div {
+  width: 20%;
+  height: 100%;
+}
+
+.rehamza-software {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.future-cube {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.motivacni-robot {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }

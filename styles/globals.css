@@ -50,12 +50,12 @@ body {
 }
 
 .header-links {
-  position: relative;
   width: 30%;
   flex-direction: row;
   justify-content: space-around;
-  align-items: stretch;
+  align-items: center;
   display: flex;
+  height: 100%;
 }
 
 a.header-link {
@@ -100,24 +100,8 @@ a {
   left: 0;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
+  align-items: stretch;
   width: 100%;
   height: 140px;
   background: white;
-}
-
-.create-user {
-  justify-content: center;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
-  background-image: linear-gradient(45deg, #00a382, #f4a142);
-}
-
-.create-user-form {
-  justify-content: center;
-  display: flex;
-  width: 50%;
 }
