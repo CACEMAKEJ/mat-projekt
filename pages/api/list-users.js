@@ -21,11 +21,15 @@ const listUsers = async (token) => {
     };
     await listAllUsers();
     console.log(users);
-    return users
-      .filter((user) => !user.customClaims?.admin)
-      .map((user) => {
-        return { email: user.email, uid: user.uid };
-      });
+    return users.map((user) => {
+      return {
+        email: user.email,
+        uid: user.uid,
+        lastSignIn: user.metadata.lastSignInTime,
+        isAdmin: !!user.customClaims?.admin,
+      };
+    });
+    console.log(users.map);
   } else {
     throw new Error('ehe');
   }
