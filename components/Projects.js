@@ -1,5 +1,5 @@
 const Projects = () => (
-  <div className='projects'>
+  <div className='projects' id='projects'>
     <div className='rehamza-software'>
       <h2>Rehamza Software</h2>
       <p>

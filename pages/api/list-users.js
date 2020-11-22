@@ -20,7 +20,6 @@ const listUsers = async (token) => {
       }
     };
     await listAllUsers();
-    console.log(users);
     return users.map((user) => {
       return {
         email: user.email,
@@ -29,7 +28,6 @@ const listUsers = async (token) => {
         isAdmin: !!user.customClaims?.admin,
       };
     });
-    console.log(users.map);
   } else {
     throw new Error('ehe');
   }

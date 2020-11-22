@@ -1,5 +1,5 @@
 const About = () => (
-  <div className='about'>
+  <div className='about' id='about'>
     <div className='about-text'>
       <p>
         <strong>Společnost REHAMZA s.r.o.</strong>

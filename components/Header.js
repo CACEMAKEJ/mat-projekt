@@ -17,12 +17,12 @@ const Header = () => (
     </div>
     <div className='header-links'>
       <span>
-        <a href='#' className='header-link'>
+        <a href='#about' className='header-link'>
           O Nás
         </a>
       </span>
       <span>
-        <a href='#' className='header-link'>
+        <a href='#projects' className='header-link'>
           Projekty
         </a>
       </span>
