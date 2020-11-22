@@ -4,7 +4,16 @@ import { useContext, useEffect, useState } from 'react';
 import UserProvider, { UserContext } from '../components/UserContext';
 import Layout from '../components/Layout.js';
 import axios from 'axios';
-import { Icon, Loader, Modal } from 'semantic-ui-react';
+import {
+  Icon,
+  Loader,
+  Modal,
+  Table,
+  TableCell,
+  Dimmer,
+  Image,
+  Segment,
+} from 'semantic-ui-react';
 
 const Dashboard = () => {
   const [email, setEmail] = useState('');
@@ -41,64 +50,71 @@ const Dashboard = () => {
     <UserContext.Consumer>
       {(value) => (
         <div className='dashboard'>
-          <div className='user-list-container'>
-            <div className='user-list'>
-              {users && (
-                <table className='ui celled table'>
-                  <thead class=''>
-                    <tr class=''>
-                      <th class=''>Email</th>
-                      <th class=''>UId</th>
-                      <th class=''>Datum posledního přihlášení</th>
-                      <th class=''>Je admin?</th>
-                      <th class=''>Licence</th>
-                    </tr>
-                  </thead>
-
-                  <tbody class=''>
-                    {users.map((user) => (
-                      <tr key={user.uid}>
-                        <td>{user.email}</td>
-                        <td>{user.uid}</td>
-                        {user.lastSignIn ? (
-                          <td>
-                            {user.lastSignIn &&
-                              new Date(user.lastSignIn).toLocaleDateString(
-                                'cs-CZ',
-                              )}
-                          </td>
+          <div className='user-list'>
+            {users && (
+              <Table celled selectable size='large' className='user-table'>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>Email</Table.HeaderCell>
+                    <Table.HeaderCell>Uid</Table.HeaderCell>
+                    <Table.HeaderCell>
+                      Datum posledního přihlášení
+                    </Table.HeaderCell>
+                    <Table.HeaderCell>Je admin?</Table.HeaderCell>
+                    <Table.HeaderCell>Licence</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                  {users.map((user) => (
+                    <Table.Row key={user.uid}>
+                      <Table.Cell>{user.email}</Table.Cell>
+                      <Table.Cell>{user.uid}</Table.Cell>
+                      {user.lastSignIn ? (
+                        <Table.Cell>
+                          {user.lastSignIn &&
+                            new Date(user.lastSignIn).toLocaleDateString(
+                              'cs-CZ',
+                            )}
+                        </Table.Cell>
+                      ) : (
+                        <Table.Cell negative>
+                          Uživatel nebyl dosud přihlášen
+                        </Table.Cell>
+                      )}
+                      <Table.Cell class='center aligned'>
+                        {user.isAdmin ? (
+                          <Icon color='green' name='checkmark' size='large' />
                         ) : (
-                          <td class='negative'>
-                            Uživatel nebyl dosud přihlášen
-                          </td>
+                          <Icon color='red' name='close' size='large' />
                         )}
-                        <td class='center aligned'>
-                          {user.isAdmin ? (
-                            <Icon color='green' name='checkmark' size='large' />
-                          ) : (
-                            <Icon color='red' name='close' size='large' />
-                          )}
-                        </td>
-                        <td>
-                          {licences
-                            .filter((licence) => licence.userId === user.uid)
-                            .map((licence) => (
-                              <li key={licence.product}>
-                                {licence.product}
-                                <br />
-                                {licence.expDate
-                                  .toDate()
-                                  .toLocaleDateString('cs-CZ')}
-                              </li>
-                            ))}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              )}
-              {!users && <h2>Načítám data..</h2>}
-            </div>
+                      </Table.Cell>
+                      <Table.Cell>
+                        {licences
+                          .filter((licence) => licence.userId === user.uid)
+                          .map((licence) => (
+                            <li key={licence.product}>
+                              {licence.product}
+                              <br />
+                              {licence.expDate
+                                .toDate()
+                                .toLocaleDateString('cs-CZ')}
+                            </li>
+                          ))}
+                      </Table.Cell>
+                    </Table.Row>
+                  ))}
+                </Table.Body>
+              </Table>
+            )}
+            {!users && (
+              <Segment>
+                <Dimmer active inverted>
+                  <Loader size='large'>Načítám data</Loader>
+                </Dimmer>
+
+                <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+              </Segment>
+            )}
           </div>
           <div className='create-user-form'>
             <form className='ui form' id='signup-form'>
