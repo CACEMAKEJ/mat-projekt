@@ -4,6 +4,7 @@ import Layout from '../components/Layout.js';
 import Header from '../components/Header.js';
 import UserCard from '../components/UserCard.js';
 import { Button } from 'semantic-ui-react';
+import Link from 'next/link';
 
 const Profile = (user) => {
   return (
