@@ -13,6 +13,8 @@ import {
   Dimmer,
   Image,
   Segment,
+  Button,
+  Form,
 } from 'semantic-ui-react';
 
 const Dashboard = () => {
@@ -21,6 +23,13 @@ const Dashboard = () => {
   const userContext = useContext(UserContext);
   const [users, setUsers] = useState(null);
   const [licences, setLicences] = useState([]);
+
+  const options = [
+    { key: 'b', text: 'Balanční plošina', value: 'balance_pad' },
+    { key: 'e', text: 'Eye Tracker', value: 'eye_tracker' },
+    { key: 'h', text: 'Hand sensor', value: 'hand_sensor' },
+    { key: 'f', text: 'Future cube', value: 'future_cube' },
+  ];
 
   const loadUsers = async () => {
     const token = await userContext.user.getIdToken(true);
@@ -50,6 +59,60 @@ const Dashboard = () => {
     <UserContext.Consumer>
       {(value) => (
         <div className='dashboard'>
+          <div className='forms'>
+            <div className='create-user-form'>
+              <h2>Vytvořit uživatele</h2>
+              <Form>
+                <Form.Field>
+                  <label>Email</label>
+                  <input
+                    value={email}
+                    placeholder='Email'
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <label>Heslo</label>
+                  <input
+                    value={password}
+                    placeholder='Heslo'
+                    onChange={(e) => setPassword(e.target.value)}
+                    type='password'
+                  />
+                </Form.Field>
+                <Button
+                  className='ui button'
+                  onClick={(e) => {
+                    e.preventDefault();
+                    value.createUser(email, password).then(() => {
+                      setEmail('');
+                      setPassword('');
+                      setUsers(null);
+                      loadUsers();
+                    });
+                  }}
+                  type='submit'
+                >
+                  Vytvořit uživatele
+                </Button>
+              </Form>
+            </div>
+            <div className='create-lincence-form'>
+              <h2>Vytvořit licenci</h2>
+              <Form>
+                <Form.Select
+                  label='Zařízení'
+                  options={options}
+                  placeholder='Zařízení'
+                />
+                <Form.Field>
+                  <label>ID uživatele</label>
+                  <input placeholder='ID uživatele' />
+                </Form.Field>
+                <Button type='submit'>Submit</Button>
+              </Form>
+            </div>
+          </div>
           <div className='user-list'>
             {users && (
               <Table celled selectable size='large' className='user-table'>
@@ -115,42 +178,6 @@ const Dashboard = () => {
                 <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
               </Segment>
             )}
-          </div>
-          <div className='create-user-form'>
-            <form className='ui form' id='signup-form'>
-              <div className='field'>
-                <label>Email</label>
-                <input
-                  value={email}
-                  placeholder='Email'
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className='field'>
-                <label>Heslo</label>
-                <input
-                  value={password}
-                  placeholder='Heslo'
-                  onChange={(e) => setPassword(e.target.value)}
-                  type='password'
-                />
-              </div>
-              <button
-                className='ui button'
-                onClick={(e) => {
-                  e.preventDefault();
-                  value.createUser(email, password).then(() => {
-                    setEmail('');
-                    setPassword('');
-                    setUsers(null);
-                    loadUsers();
-                  });
-                }}
-                type='submit'
-              >
-                Vytvořit uživatele
-              </button>
-            </form>
           </div>
         </div>
       )}
