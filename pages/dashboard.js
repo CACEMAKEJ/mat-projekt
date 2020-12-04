@@ -3,6 +3,7 @@ import next from 'next';
 import { useContext, useEffect, useState } from 'react';
 import UserProvider, { UserContext } from '../components/UserContext';
 import Layout from '../components/Layout.js';
+import Select from 'react-select';
 import axios from 'axios';
 import {
   Icon,
@@ -25,10 +26,9 @@ const Dashboard = () => {
   const [licences, setLicences] = useState([]);
 
   const options = [
-    { key: 'b', text: 'Balanční plošina', value: 'balance_pad' },
-    { key: 'e', text: 'Eye Tracker', value: 'eye_tracker' },
-    { key: 'h', text: 'Hand sensor', value: 'hand_sensor' },
-    { key: 'f', text: 'Future cube', value: 'future_cube' },
+    { value: 'balancePad', label: 'Balanční plošina' },
+    { value: 'eyeTracker', label: 'Oční senzor' },
+    { value: 'futureCube', label: 'Future Cube' },
   ];
 
   const loadUsers = async () => {
@@ -100,11 +100,7 @@ const Dashboard = () => {
             <div className='create-lincence-form'>
               <h2>Vytvořit licenci</h2>
               <Form>
-                <Form.Select
-                  label='Zařízení'
-                  options={options}
-                  placeholder='Zařízení'
-                />
+                <Select isMulti options={options} />
                 <Form.Field>
                   <label>ID uživatele</label>
                   <input placeholder='ID uživatele' />
