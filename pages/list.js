@@ -9,7 +9,6 @@ function list() {
       const db = firebase.firestore();
       const data = await db.collection('licences').get();
       setLicences(data.docs.map((doc) => doc.data()));
-      console.log(data);
     };
     fetchData();
   }, []);

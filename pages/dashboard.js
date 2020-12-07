@@ -24,6 +24,8 @@ const Dashboard = () => {
   const userContext = useContext(UserContext);
   const [users, setUsers] = useState(null);
   const [licences, setLicences] = useState([]);
+  const [licenceUserId, setLicenceUserId] = useState('');
+  const [products, setProducts] = useState([]);
 
   const options = [
     { value: 'balancePad', label: 'Balanční plošina' },
@@ -50,10 +52,19 @@ const Dashboard = () => {
       const db = firebase.firestore();
       const data = await db.collection('licences').get();
       setLicences(data.docs.map((doc) => doc.data()));
-      console.log(data);
     };
     fetchData();
   }, []);
+
+  const createLicence = async (licenceUserId, products) => {
+    const db = firebase.firestore();
+    const data = {
+      products: products,
+      userId: licenceUserId,
+    };
+    console.log(data);
+    const res = await db.collection('licences').doc(licenceUserId).set(data);
+  };
 
   return (
     <UserContext.Consumer>
@@ -73,12 +84,7 @@ const Dashboard = () => {
                 </Form.Field>
                 <Form.Field>
                   <label>Heslo</label>
-                  <input
-                    value={password}
-                    placeholder='Heslo'
-                    onChange={(e) => setPassword(e.target.value)}
-                    type='password'
-                  />
+                  <input value={password} placeholder='Heslo' type='password' />
                 </Form.Field>
                 <Button
                   className='ui button'
@@ -100,12 +106,33 @@ const Dashboard = () => {
             <div className='create-lincence-form'>
               <h2>Vytvořit licenci</h2>
               <Form>
-                <Select isMulti options={options} />
+                <Select
+                  isMulti
+                  options={options}
+                  onChange={(value) => {
+                    setProducts(value.map((option) => option.value));
+                  }}
+                  placeholder='Vyber produkt'
+                />
                 <Form.Field>
                   <label>ID uživatele</label>
-                  <input placeholder='ID uživatele' />
+                  <input
+                    value={licenceUserId}
+                    onChange={(e) => setLicenceUserId(e.target.value)}
+                    placeholder='ID uživatele'
+                  />
                 </Form.Field>
-                <Button type='submit'>Submit</Button>
+                <Button
+                  onClick={(e) => {
+                    createLicence(licenceUserId, products).then(() => {
+                      setLicenceUserId('');
+                      setProducts([]);
+                    });
+                  }}
+                  type='submit'
+                >
+                  Submit
+                </Button>
               </Form>
             </div>
           </div>
@@ -148,17 +175,15 @@ const Dashboard = () => {
                         )}
                       </Table.Cell>
                       <Table.Cell>
-                        {licences
-                          .filter((licence) => licence.userId === user.uid)
-                          .map((licence) => (
-                            <li key={licence.product}>
-                              {licence.product}
-                              <br />
-                              {licence.expDate
-                                .toDate()
-                                .toLocaleDateString('cs-CZ')}
-                            </li>
-                          ))}
+                        <p>
+                          {licences
+                            .filter(
+                              (licence) =>
+                                licence.userId.trim() === user.uid.trim(),
+                            )
+                            .map((licence) => licence.products)
+                            .join(',')}
+                        </p>
                       </Table.Cell>
                     </Table.Row>
                   ))}
@@ -168,7 +193,7 @@ const Dashboard = () => {
             {!users && (
               <Segment>
                 <Dimmer active inverted>
-                  <Loader size='large'>Načítám data</Loader>
+                  <Loader size='massive'>Načítám data</Loader>
                 </Dimmer>
 
                 <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
