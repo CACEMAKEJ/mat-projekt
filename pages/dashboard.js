@@ -20,6 +20,7 @@ import {
 } from 'semantic-ui-react';
 
 const Dashboard = () => {
+  const today = new Date();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const userContext = useContext(UserContext);
@@ -27,6 +28,9 @@ const Dashboard = () => {
   const [licences, setLicences] = useState([]);
   const [licenceUserId, setLicenceUserId] = useState('');
   const [products, setProducts] = useState([]);
+  const [expDate, setExpDate] = useState(
+    today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate(),
+  );
 
   const options = [
     { value: 'balancePad', label: 'Balanční plošina' },
@@ -57,11 +61,15 @@ const Dashboard = () => {
     fetchData();
   }, []);
 
-  const createLicence = async (licenceUserId, products) => {
+  const createLicence = async (licenceUserId, products, expDate) => {
     const db = firebase.firestore();
+    const splitDate = expDate.split('-');
     const data = {
-      products: products,
+      products,
       userId: licenceUserId,
+      expDate: firebase.firestore.Timestamp.fromDate(
+        new Date(splitDate[0], splitDate[1] - 1, splitDate[2]),
+      ),
     };
     console.log(data);
     const res = await db.collection('licences').doc(licenceUserId).set(data);
@@ -85,7 +93,12 @@ const Dashboard = () => {
                 </Form.Field>
                 <Form.Field>
                   <label>Heslo</label>
-                  <input value={password} placeholder='Heslo' type='password' />
+                  <input
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder='Heslo'
+                    type='password'
+                  />
                 </Form.Field>
                 <Button
                   className='ui button'
@@ -108,6 +121,7 @@ const Dashboard = () => {
               <h2>Vytvořit licenci</h2>
               <Form>
                 <Select
+                  instanceId='select'
                   isMulti
                   options={options}
                   onChange={(value) => {
@@ -123,11 +137,27 @@ const Dashboard = () => {
                     placeholder='ID uživatele'
                   />
                 </Form.Field>
+                <Form.Field>
+                  <label>Datum vypršení licence</label>
+                  <input
+                    type='date'
+                    value={expDate}
+                    onChange={(e) => setExpDate(e.target.value)}
+                  ></input>
+                </Form.Field>
                 <Button
                   onClick={(e) => {
-                    createLicence(licenceUserId, products).then(() => {
+                    createLicence(licenceUserId, products, expDate).then(() => {
                       setLicenceUserId('');
                       setProducts([]);
+                      const today = new Date();
+                      setExpDate(
+                        today.getFullYear() +
+                          '-' +
+                          (today.getMonth() + 1) +
+                          '-' +
+                          today.getDate(),
+                      );
                     });
                   }}
                   type='submit'
