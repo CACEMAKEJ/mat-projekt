@@ -16,6 +16,7 @@ import {
   Segment,
   Button,
   Form,
+  Menu,
 } from 'semantic-ui-react';
 
 const Dashboard = () => {
@@ -167,13 +168,11 @@ const Dashboard = () => {
                           Uživatel nebyl dosud přihlášen
                         </Table.Cell>
                       )}
-                      <Table.Cell class='center aligned'>
-                        {user.isAdmin ? (
-                          <Icon color='green' name='checkmark' size='large' />
-                        ) : (
-                          <Icon color='red' name='close' size='large' />
-                        )}
-                      </Table.Cell>
+                      {user.isAdmin ? (
+                        <Table.Cell positive>Je admin</Table.Cell>
+                      ) : (
+                        <Table.Cell negative>Není admin</Table.Cell>
+                      )}
                       <Table.Cell>
                         <p>
                           {licences
@@ -188,6 +187,24 @@ const Dashboard = () => {
                     </Table.Row>
                   ))}
                 </Table.Body>
+                <Table.Footer>
+                  <Table.Row>
+                    <Table.HeaderCell colSpan='5'>
+                      <Menu floated='right' pagination>
+                        <Menu.Item as='a' icon>
+                          <Icon name='chevron left' />
+                        </Menu.Item>
+                        <Menu.Item as='a'>1</Menu.Item>
+                        <Menu.Item as='a'>2</Menu.Item>
+                        <Menu.Item as='a'>3</Menu.Item>
+                        <Menu.Item as='a'>4</Menu.Item>
+                        <Menu.Item as='a' icon>
+                          <Icon name='chevron right' />
+                        </Menu.Item>
+                      </Menu>
+                    </Table.HeaderCell>
+                  </Table.Row>
+                </Table.Footer>
               </Table>
             )}
             {!users && (

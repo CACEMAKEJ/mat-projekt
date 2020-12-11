@@ -10,7 +10,10 @@ import App, { Container } from 'next/app';
 import UserProvider from '../components/UserContext';
 
 const dev = process.env.NODE_ENV === 'development';
-const server = 'http://localhost:3000';
+
+const server = dev
+  ? 'http://localhost:3000'
+  : 'https://mat-projekt.vercel.app/';
 
 export default function MyApp(appContext) {
   const { Component, pageProps } = appContext;

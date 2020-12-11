@@ -9,39 +9,8 @@ import Link from 'next/link';
 const Profile = (user) => {
   return (
     <div className='profile'>
-      <div>
-        <UserContext.Consumer>
-          {(value) =>
-            !value.user && (
-              <Link href='/login'>
-                <Button
-                  basic
-                  color='black'
-                  size='small'
-                  style={{ fontWeight: 'bold' }}
-                >
-                  Přihlásit se
-                </Button>
-              </Link>
-            )
-          }
-        </UserContext.Consumer>
-        <UserContext.Consumer>
-          {(value) =>
-            value.user && (
-              <Button
-                onClick={value.logout}
-                basic
-                color='black'
-                size='large'
-                style={{ fontWeight: 'bold' }}
-              >
-                Odhlásit se
-              </Button>
-            )
-          }
-        </UserContext.Consumer>
-      </div>
+      <Header />
+      <div></div>
       <div className='user'>
         <div className='profile-usercard'>
           <UserCard />

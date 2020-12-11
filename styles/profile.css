@@ -1,5 +1,6 @@
 .profile {
-  height: 100vh;
+  margin-top: 140px;
+  height: calc(100vh - 140px);
   background-color: #b6b6b6;
   align-items: stretch;
   display: flex;
@@ -22,5 +23,6 @@
 }
 
 .user {
+  height: 100%;
   display: flex;
 }
