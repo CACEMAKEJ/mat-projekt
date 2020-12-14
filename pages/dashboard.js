@@ -44,7 +44,6 @@ const Dashboard = () => {
       headers: { Authorization: 'Bearer ' + token },
     });
     setUsers(users.data);
-    console.log(users);
   };
 
   useEffect(() => {
