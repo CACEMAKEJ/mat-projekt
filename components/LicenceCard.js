@@ -4,25 +4,7 @@ import { UserContext } from '../components/UserContext';
 import { useContext, useState, useEffect } from 'react';
 import firebase from '../firebaseSetup';
 
-const LicenceCard = () => {
-  const userContext = useContext(UserContext);
-  const [licence, setLicence] = useState(null);
-
-  useEffect(() => {
-    if (!userContext.user) return;
-    const fetchData = async () => {
-      const db = firebase.firestore();
-      const data = await db
-        .collection('licences')
-        .where('userId', '==', userContext.user.uid)
-        .get();
-      if (data.docs.length > 0) {
-        setLicence(data.docs[0].data());
-      }
-    };
-    fetchData();
-  }, [userContext.user]);
-
+const LicenceCard = ({ licence }) => {
   return (
     <UserContext.Consumer>
       {(value) => (

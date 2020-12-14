@@ -14,17 +14,18 @@ const Profile = (user) => {
 
   useEffect(() => {
     if (!userContext.user) return;
-    const fetchData = async () => {
-      const db = firebase.firestore();
-      const data = await db
-        .collection('licences')
-        .where('userId', '==', userContext.user.uid)
-        .get();
-      if (data.docs.length > 0) {
-        setLicence(data.docs[0].data());
-      }
+    const yeet = firebase
+      .firestore()
+      .collection('licences')
+      .where('userId', '==', userContext.user.uid)
+      .onSnapshot((snapshot) => {
+        if (snapshot.docs.length > 0) {
+          setLicence(snapshot.docs[0].data());
+        }
+      });
+    return () => {
+      yeet();
     };
-    fetchData();
   }, [userContext.user]);
 
   return (
@@ -37,7 +38,7 @@ const Profile = (user) => {
         </div>
         <div className='profile-licences'>
           <h2>Vámi vlastněná licence</h2>
-          <LicenceCard />
+          <LicenceCard licence={licence} />
         </div>
       </div>
     </div>
