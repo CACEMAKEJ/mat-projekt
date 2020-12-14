@@ -48,6 +48,15 @@ const UserProvider = ({ children, initialUser }) => {
     );
   };
 
+  const updateProfile = async (isAdmin) => {
+    const token = await user.getIdToken(true);
+    await axios.post(
+      '/api/update-profile',
+      { isAdmin },
+      { headers: { Authorization: 'Bearer ' + token } },
+    );
+  };
+
   const onAuthStateChange = () => {
     return firebase.auth().onAuthStateChanged(async (user) => {
       if (user) {
@@ -70,7 +79,9 @@ const UserProvider = ({ children, initialUser }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ emailLogin, logout, user, createUser }}>
+    <UserContext.Provider
+      value={{ emailLogin, logout, user, createUser, updateProfile }}
+    >
       {children}
     </UserContext.Provider>
   );

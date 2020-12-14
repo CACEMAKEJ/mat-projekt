@@ -44,6 +44,7 @@ const Dashboard = () => {
       headers: { Authorization: 'Bearer ' + token },
     });
     setUsers(users.data);
+    console.log(users);
   };
 
   useEffect(() => {
@@ -71,7 +72,7 @@ const Dashboard = () => {
         new Date(splitDate[0], splitDate[1] - 1, splitDate[2]),
       ),
     };
-    console.log(data);
+
     const res = await db.collection('licences').doc(licenceUserId).set(data);
   };
 
@@ -128,6 +129,7 @@ const Dashboard = () => {
                     setProducts(value.map((option) => option.value));
                   }}
                   placeholder='Vyber produkt'
+                  closeMenuOnSelect={false}
                 />
                 <Form.Field>
                   <label>ID uživatele</label>
@@ -147,6 +149,7 @@ const Dashboard = () => {
                 </Form.Field>
                 <Button
                   onClick={(e) => {
+                    e.preventDefault();
                     createLicence(licenceUserId, products, expDate).then(() => {
                       setLicenceUserId('');
                       setProducts([]);
