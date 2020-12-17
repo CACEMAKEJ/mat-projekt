@@ -117,7 +117,7 @@ const Dashboard = () => {
                 </Button>
               </Form>
             </div>
-            <div className='create-lincence-form'>
+            <div className='create-licence-form'>
               <h2>Vytvořit licenci</h2>
               <Form>
                 <Select
@@ -171,7 +171,7 @@ const Dashboard = () => {
           </div>
           <div className='user-list'>
             {users && (
-              <Table celled selectable size='large' className='user-table'>
+              <Table celled selectable size='small' className='user-table'>
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>Email</Table.HeaderCell>
@@ -219,24 +219,6 @@ const Dashboard = () => {
                     </Table.Row>
                   ))}
                 </Table.Body>
-                <Table.Footer>
-                  <Table.Row>
-                    <Table.HeaderCell colSpan='5'>
-                      <Menu floated='right' pagination>
-                        <Menu.Item as='a' icon>
-                          <Icon name='chevron left' />
-                        </Menu.Item>
-                        <Menu.Item as='a'>1</Menu.Item>
-                        <Menu.Item as='a'>2</Menu.Item>
-                        <Menu.Item as='a'>3</Menu.Item>
-                        <Menu.Item as='a'>4</Menu.Item>
-                        <Menu.Item as='a' icon>
-                          <Icon name='chevron right' />
-                        </Menu.Item>
-                      </Menu>
-                    </Table.HeaderCell>
-                  </Table.Row>
-                </Table.Footer>
               </Table>
             )}
             {!users && (
