@@ -1,12 +1,16 @@
-.login-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: lightblue;
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
-.bt-login.text{
-    text-decoration: none !important;
-    color: black !important;
+
+.bt-login.text {
+  text-decoration: none !important;
+  color: black !important;
+}
+
+.login-rehamza-img {
+  padding-bottom: 20px;
 }

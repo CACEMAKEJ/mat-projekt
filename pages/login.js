@@ -1,5 +1,5 @@
 import next from 'next';
-import { Form, Button } from 'semantic-ui-react';
+import { Form, Button, Image } from 'semantic-ui-react';
 import { useState } from 'react';
 import UserProvider, { UserContext } from '../components/UserContext';
 
@@ -11,7 +11,13 @@ const Login = () => {
     <UserContext.Consumer>
       {(value) => (
         <div className='login-container'>
-          <Form>
+          <Image
+            src='/logo.svg'
+            alt='Rehamza'
+            size='medium'
+            className='login-rehamza-img'
+          ></Image>
+          <Form size='huge'>
             <Form.Field>
               <label>Email</label>
               <input
@@ -29,10 +35,10 @@ const Login = () => {
             <Button
               onClick={() => value.emailLogin(email, password, '/profile')}
               type='submit'
+              size='big'
             >
               Přihlásit
             </Button>
-            <Button onClick={() => value.logout('/')}>Odhlásit</Button>
           </Form>
         </div>
       )}

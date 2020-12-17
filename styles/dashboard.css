@@ -1,10 +1,5 @@
-body {
-  background-color: #f0f0f0;
-}
-
 .dashboard {
   display: flex;
-  height: 100vh;
   flex-direction: column;
   height: 100%;
 }
