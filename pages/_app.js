@@ -6,6 +6,8 @@ import '../styles/login.css';
 import '../styles/profile.css';
 import '../styles/projects.css';
 import '../styles/dashboard.css';
+import '../styles/header.css';
+import '../styles/team.css';
 import App, { Container } from 'next/app';
 import UserProvider from '../components/UserContext';
 

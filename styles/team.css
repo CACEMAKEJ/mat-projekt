@@ -1,0 +1,26 @@
+.team {
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+
+.team-info {
+  height: 30%;
+  width: 100%;
+  padding: 7rem;
+}
+
+.team-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.team-img img {
+  display: block;
+  width: 200px;
+  height: 200px;
+}
