@@ -10,6 +10,7 @@ import '../styles/header.css';
 import '../styles/team.css';
 import App, { Container } from 'next/app';
 import UserProvider from '../components/UserContext';
+import Head from 'next/head';
 
 const dev = process.env.NODE_ENV === 'development';
 
@@ -21,6 +22,10 @@ export default function MyApp(appContext) {
   const { Component, pageProps } = appContext;
   return (
     <UserProvider initialUser={appContext.user}>
+      <Head>
+        <title>Maturitní projekt</title>
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      </Head>
       <Component {...pageProps} />
     </UserProvider>
   );
