@@ -8,6 +8,8 @@ import '../styles/projects.css';
 import '../styles/dashboard.css';
 import '../styles/header.css';
 import '../styles/team.css';
+import '../styles/landing.css';
+import '../styles/about.css';
 import App, { Container } from 'next/app';
 import UserProvider from '../components/UserContext';
 import Head from 'next/head';

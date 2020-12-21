@@ -1,37 +1,56 @@
 .projects {
-  height: 70vh;
-  background-color: #f4a142;
-  justify-content: space-around;
-  align-items: stretch;
-  display: flex;
-  width: 100%;
-}
-
-.projects div {
-  width: 20%;
   height: 100%;
-}
-
-.rehamza-software {
-  width: 100%;
-  justify-content: center;
+  background-color: #f4a142;
   align-items: center;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  font-size: 1.4rem;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: lighter;
+}
+.projects h1 {
+  font-family: 'Roboto', sans-serif;
+  padding-top: 50px;
+  font-size: 5rem;
 }
 
-.future-cube {
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
+.projects h2 {
+  font-family: 'Roboto', sans-serif;
+  padding-top: 50px;
+  font-size: 2rem;
 }
 
-.motivacni-robot {
-  width: 100%;
-  justify-content: center;
+.projects img {
+  display: block;
+  height: 35vh;
+}
+
+.product {
+  padding-top: 70px;
+  padding-bottom: 50px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  width: 90%;
+  justify-content: space-around;
   align-items: center;
   display: flex;
-  flex-direction: column;
+}
+
+.product:nth-child(odd) {
+  padding-top: 70px;
+  padding-bottom: 50px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  width: 90%;
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.product-text {
+  width: 40%;
 }

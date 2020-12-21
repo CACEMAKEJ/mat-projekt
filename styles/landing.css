@@ -34,10 +34,10 @@
 
 .landing-image img {
   width: 20vw;
-  height: 20vw;
+  height: 20vh;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 900px) {
   .landing {
     flex-direction: column;
     padding: 3em;
@@ -49,6 +49,8 @@
 
   .landing-image {
     height: 100%;
+    width: 80vw;
+    height: 80vh;
   }
 
   .landing-text h2 {

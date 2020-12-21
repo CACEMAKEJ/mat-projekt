@@ -1,6 +1,7 @@
 const About = () => (
   <div className='about' id='about'>
     <div className='about-text'>
+      <h2>O NÁS</h2>
       <p>
         <strong>Společnost REHAMZA s.r.o.</strong>
         <br></br> byla založena v říjnu roku 2017 a jejím zakladatelem je Ing.
@@ -11,7 +12,7 @@ const About = () => (
       </p>
     </div>
     <div className='about-image'>
-      <img src='/helpik.jpg' alt='Helpík'></img>
+      <img src='/helpik.jpg' alt='Helpík' className='img-shadow'></img>
     </div>
   </div>
 );

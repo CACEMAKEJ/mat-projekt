@@ -13,7 +13,6 @@ export default class Index extends React.Component {
           <Landing />
           <About />
           <Projects />
-          <Team />
         </div>
       </Layout>
     );

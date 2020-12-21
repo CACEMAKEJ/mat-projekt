@@ -13,63 +13,7 @@ body {
   height: 100vh;
 }
 
-.about {
-  height: 50vh;
-  background: white;
-  justify-content: center;
-  align-items: stretch;
-  display: flex;
-}
-
-.about-text {
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
-
-.about-text > p {
-  width: 60%;
-  font-size: 20px;
-}
-
-.about-image {
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
-
-.about-image > img {
-  display: block;
-  width: 30vw;
-}
-
-@media (max-width: 1200px) {
-  .about {
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 3em;
-  }
-  .landing {
-    flex-direction: column;
-    padding: 3em;
-  }
-
-  .landing-text {
-    height: 100%;
-  }
-
-  .landing-image {
-    height: 100%;
-  }
-
-  .landing-text h2 {
-    font-family: 'Roboto', sans-serif !important;
-    font-size: 6vw !important;
-  }
-  .landing-image img {
-    width: 50vw;
-    height: 100%;
-  }
+.img-shadow {
+  border-radius: 20px;
+  filter: drop-shadow(0 0px 20px black);
 }
