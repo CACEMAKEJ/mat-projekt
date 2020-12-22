@@ -11,6 +11,7 @@
   font-family: 'Roboto', sans-serif;
   font-weight: lighter;
 }
+
 .projects h1 {
   font-family: 'Roboto', sans-serif;
   padding-top: 50px;
@@ -23,11 +24,6 @@
   font-size: 2rem;
 }
 
-.projects img {
-  display: block;
-  height: 35vh;
-}
-
 .product {
   padding-top: 70px;
   padding-bottom: 50px;
@@ -37,6 +33,14 @@
   justify-content: space-around;
   align-items: center;
   display: flex;
+}
+
+.product-image {
+  width: 25%;
+}
+
+.product-image img {
+  width: 100%;
 }
 
 .product:nth-child(odd) {
@@ -53,4 +57,48 @@
 
 .product-text {
   width: 40%;
+}
+
+@media (max-width: 900px) {
+  .projects {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .projects h1 {
+    text-align: center;
+    font-size: 4rem;
+    padding-bottom: 5rem;
+  }
+  .projects h2 {
+    padding-top: 0;
+  }
+
+  .product {
+    flex-direction: column;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 6rem;
+  }
+
+  .product:nth-child(odd) {
+    flex-direction: column;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 3rem;
+  }
+
+  .product-text {
+    padding-bottom: 4rem;
+    width: 100%;
+  }
+
+  .product-image {
+    width: 80%;
+  }
+
+  .product-image img {
+    width: 100%;
+  }
 }
