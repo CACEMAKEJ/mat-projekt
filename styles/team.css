@@ -1,26 +1,48 @@
 .team {
-  height: 100vh;
   background-color: white;
-  display: flex;
+  width: 100%;
   align-items: center;
+  justify-content: space-around;
+  display: flex;
+  font-size: 1.4rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.team-info h2 {
+  font-family: 'Roboto', sans-serif;
+  padding-top: 50px;
+  font-size: 5rem;
 }
 
 .team-info {
-  height: 30%;
+  text-align: center;
+  height: 90%;
   width: 100%;
-  padding: 7rem;
 }
 
 .team-img {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 100%;
+  width: 70%;
 }
 
 .team-img img {
   display: block;
-  width: 200px;
-  height: 200px;
+  width: 40%;
+}
+
+@media (max-width: 900px) {
+  .team {
+    flex-direction: column;
+  }
+
+  .team-img {
+    padding-top: 5rem;
+    width: 100%;
+  }
 }

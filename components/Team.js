@@ -3,16 +3,17 @@ import { Image } from 'semantic-ui-react';
 const Team = () => (
   <div className='team' id='team'>
     <div className='team-info'>
+      <h2>Ing. Pavel Čáp</h2>
+      <p>Od roku 1996 se věnuje programování.</p>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-        sit amet porta nibh. Aenean ut volutpat ligula. Nam sagittis ac ante
-        dapibus pulvinar. Aenean et risus sed ligula facilisis suscipit nec
-        elementum dui. Proin eget elementum est. Nulla neque magna, feugiat ut
-        ligula non, posuere ultrices nisl. Vestibulum condimentum lacus in eros
-        varius, sed lacinia massa hendrerit. Vestibulum at posuere turpis. Proin
-        pharetra molestie ligula. Duis id magna odio. Pellentesque vel quam eget
-        mi sollicitudin fermentum ut eu odio.
+        Od roku 2013 začal vyvíjet rehabilitační pomůcky společně s Hamzovou
+        léčebnou.
       </p>
+      <p>
+        V roce 2015 dostal cenu Duhové Křídlo za vývoj rehabilitačních pomůcek a
+        vedení žáků k pomoci druhým.
+      </p>
+      <p>Od roku 2017 získal ocenění Microsoft Innovative Educator Expert.</p>
     </div>
     <div className='team-img'>
       <Image src='/cap.png'></Image>
