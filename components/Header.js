@@ -17,16 +17,16 @@ const Header = () => {
       <div className={`header-links ${open ? 'active' : 'inactive'}`}>
         <ul>
           <li>
-            <a href='#about'>O Nás</a>
+            <a href='/#about'>O Nás</a>
           </li>
           <li>
-            <a href='#projects'>Projekty</a>
+            <a href='/#projects'>Projekty</a>
           </li>
           <li>
-            <a href='#team'>Tým</a>
+            <a href='/#team'>Tým</a>
           </li>
           <li>
-            <a href='#contact'>Kontakt</a>
+            <a href='/#contact'>Kontakt</a>
           </li>
         </ul>
         <UserContext.Consumer>
