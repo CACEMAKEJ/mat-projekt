@@ -20,7 +20,7 @@ const Header = () => {
             <a href='/#about'>O Nás</a>
           </li>
           <li>
-            <a href='/#projects'>Projekty</a>
+            <a href='/produkty'>Produkty</a>
           </li>
           <li>
             <a href='/#team'>Tým</a>

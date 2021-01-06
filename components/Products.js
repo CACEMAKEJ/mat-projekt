@@ -1,5 +1,5 @@
-const Projects = () => (
-  <div className='projects' id='projects'>
+const Products = () => (
+  <div className='products' id='products'>
     <h1>NAŠE PROJEKTY</h1>
     <div className='product'>
       <div className='product-text'>
@@ -52,4 +52,4 @@ const Projects = () => (
     </div>
   </div>
 );
-export default Projects;
+export default Products;

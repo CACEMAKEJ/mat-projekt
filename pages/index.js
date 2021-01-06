@@ -2,7 +2,6 @@ import Layout from '../components/Layout.js';
 import Header from '../components/Header.js';
 import About from '../components/About.js';
 import Landing from '../components/Landing.js';
-import Projects from '../components/Projects.js';
 import Team from '../components/Team.js';
 
 export default class Index extends React.Component {
@@ -12,7 +11,6 @@ export default class Index extends React.Component {
         <div className='container'>
           <Landing />
           <About />
-          <Projects />
           <Team />
         </div>
       </Layout>
