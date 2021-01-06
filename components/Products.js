@@ -1,6 +1,6 @@
 const Products = () => (
   <div className='products' id='products'>
-    <h1>NAŠE PROJEKTY</h1>
+    <h1>NAŠE PRODUKTY</h1>
     <div className='product'>
       <div className='product-text'>
         <h2>Rehamza Software</h2>
