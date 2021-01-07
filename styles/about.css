@@ -5,16 +5,17 @@
   align-items: stretch;
   display: flex;
   line-height: 1.7;
-  font-size: 1.6em;
+  font-size: 1.7em;
   padding-left: 60px;
   padding-right: 60px;
   padding-top: 90px;
   padding-bottom: 90px;
 }
 .about-text h2 {
-  letter-spacing: 0.7rem;
+  font-family: 'Roboto', sans-serif;
   font-size: 4rem;
-  padding-bottom: 3rem;
+  padding-bottom: 1rem;
+  width: 70%;
 }
 
 .about-text {
@@ -26,7 +27,7 @@
 }
 
 .about-text > p {
-  width: 90%;
+  width: 70%;
 }
 
 .about-image {
@@ -43,19 +44,24 @@
 
 @media (max-width: 900px) {
   .about {
+    padding-left: 2rem;
+    padding-right: 2rem;
     font-size: 15px;
     height: 100%;
     flex-direction: column;
     justify-content: space-around;
-    padding: 3em;
   }
 
   .about-text > p {
-    width: 70vw;
+    width: 80%;
     padding-bottom: 6rem;
   }
 
+  .about-text > h2 {
+    width: 80%;
+  }
+
   .about-image > img {
-    width: 60vw;
+    width: 70vw;
   }
 }
