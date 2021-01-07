@@ -4,7 +4,7 @@ import fetch from 'isomorphic-unfetch';
 import cookies from 'next-cookies';
 import '../styles/login.css';
 import '../styles/profile.css';
-import '../styles/projects.css';
+import '../styles/products.css';
 import '../styles/dashboard.css';
 import '../styles/header.css';
 import '../styles/team.css';
