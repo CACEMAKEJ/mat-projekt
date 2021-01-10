@@ -5,9 +5,11 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  font-size: 1.3rem;
-  padding-left: 20px;
-  padding-right: 20px;
+  line-height: 1.7;
+  font-size: 1.7em;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 5rem;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -23,8 +25,7 @@
 }
 
 .product {
-  padding-top: 70px;
-  padding-bottom: 50px;
+  padding-top: 8rem;
   padding-left: 2rem;
   padding-right: 2rem;
   width: 90%;
@@ -73,6 +74,7 @@
 
   .product {
     flex-direction: column;
+    font-size: 1.4rem;
     padding-top: 0;
     padding-left: 0;
     padding-right: 0;
