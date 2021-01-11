@@ -80,43 +80,6 @@ const Dashboard = () => {
       {(value) => (
         <div className='dashboard'>
           <div className='forms'>
-            <div className='create-user-form'>
-              <h2>Vytvořit uživatele</h2>
-              <Form>
-                <Form.Field>
-                  <label>Email</label>
-                  <input
-                    value={email}
-                    placeholder='Email'
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <label>Heslo</label>
-                  <input
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder='Heslo'
-                    type='password'
-                  />
-                </Form.Field>
-                <Button
-                  className='ui button'
-                  onClick={(e) => {
-                    e.preventDefault();
-                    value.createUser(email, password).then(() => {
-                      setEmail('');
-                      setPassword('');
-                      setUsers(null);
-                      loadUsers();
-                    });
-                  }}
-                  type='submit'
-                >
-                  Vytvořit uživatele
-                </Button>
-              </Form>
-            </div>
             <div className='create-licence-form'>
               <h2>Vytvořit licenci</h2>
               <Form>

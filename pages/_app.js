@@ -10,6 +10,7 @@ import '../styles/header.css';
 import '../styles/team.css';
 import '../styles/landing.css';
 import '../styles/about.css';
+import '../styles/register.css';
 import App, { Container } from 'next/app';
 import UserProvider from '../components/UserContext';
 import Head from 'next/head';
