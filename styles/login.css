@@ -3,14 +3,26 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  padding: 8rem 3rem 0;
 }
 
-.bt-login.text {
-  text-decoration: none !important;
-  color: black !important;
+.login-form > h2 {
+  color: orange;
 }
 
-.login-rehamza-img {
-  padding-bottom: 20px;
+.login-form-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 500px) {
+  .login-form-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .login-form-footer a {
+    padding-top: 1em;
+  }
 }

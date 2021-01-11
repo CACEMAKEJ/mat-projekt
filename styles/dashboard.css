@@ -12,11 +12,6 @@
   display: flex;
 }
 
-.create-user-form {
-  justify-content: center;
-  width: 20%;
-}
-
 .create-licence-form {
   justify-content: center;
   width: 20%;
@@ -53,10 +48,6 @@ li {
     flex-grow: 1;
     flex-direction: column;
     align-items: center;
-  }
-
-  .create-user-form {
-    width: 60%;
   }
 
   .create-licence-form {
