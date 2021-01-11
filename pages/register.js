@@ -7,6 +7,7 @@ import UserProvider, { UserContext } from '../components/UserContext';
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [users, setUsers] = useState(null);
 
   return (
     <UserContext.Consumer>
