@@ -28,7 +28,7 @@ const Team = () => (
       </ul>
     </div>
     <div className='team-img'>
-      <Image src='/cap.png'></Image>
+      <Image src='/cap2.png'></Image>
     </div>
   </div>
 );
