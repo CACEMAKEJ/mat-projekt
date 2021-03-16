@@ -1,6 +1,6 @@
 .profile {
   margin-top: 140px;
-  height: calc(100vh - 140px);
+  height: 100%;
   background-color: #b6b6b6;
   align-items: stretch;
   display: flex;
@@ -16,13 +16,35 @@
 
 .profile-licences {
   justify-content: center;
-  align-items: center;
   flex-grow: 1;
+  align-items: left;
   display: flex;
   flex-direction: column;
 }
 
+.card-description {
+  font-size: 2.5em;
+}
+
 .user {
-  height: 100%;
+  height: calc(100vh - 140px);
   display: flex;
+}
+
+@media (max-width: 900px) {
+  .profile-licences {
+    align-items: center;
+  }
+
+  .profile-usercard {
+    padding-top: 3em;
+    padding-bottom: 3em;
+  }
+
+  .user {
+    flex-direction: column;
+  }
+  .card-description {
+    font-size: 2.2em;
+  }
 }
