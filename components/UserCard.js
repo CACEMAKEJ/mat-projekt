@@ -5,7 +5,8 @@ import { UserContext } from '../components/UserContext';
 const UserCard = () => (
   <UserContext.Consumer>
     {(value) => (
-      <Card>
+      <Card color='green'>
+        <Image src='/cap2.png' />
         <Card.Content>
           <Card.Header>
             <h2>{value.user.email}</h2>
