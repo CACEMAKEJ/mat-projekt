@@ -34,10 +34,11 @@
 @media (max-width: 900px) {
   .profile-licences {
     align-items: center;
+    padding-bottom: 4em;
   }
 
   .profile-usercard {
-    padding-top: 3em;
+    padding-top: 4em;
     padding-bottom: 3em;
   }
 
