@@ -8,7 +8,7 @@ const LicenceCard = ({ licence }) => {
   return (
     <UserContext.Consumer>
       {(value) => (
-        <Card>
+        <Card color='orange'>
           <Card.Content>
             <Card.Header>
               {licence && <h2>{licence.products.join(',')}</h2>}
