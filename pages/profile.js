@@ -29,19 +29,17 @@ const Profile = (user) => {
   }, [userContext.user]);
 
   return (
-    <div className='profile'>
-      <Header />
-      <div></div>
+    <Layout>
       <div className='user'>
         <div className='profile-usercard'>
           <UserCard />
         </div>
         <div className='profile-licences'>
-          <h2>Vámi vlastněná licence</h2>
+          <h2 className='card-description'>Vámi vlastněná licence</h2>
           <LicenceCard licence={licence} />
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 
